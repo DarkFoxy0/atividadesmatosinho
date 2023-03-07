@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tabuada</title>
+  
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Operação</th>
+                <th>Resultado</th>
+            </tr>
+        </thead>
+        <form>
+            <label for="numero">Insira um número:</label>
+            <input type="number" id="numero" name="numero">
+            <button type="submit">Calcular</button>
+        </form>
+        <tbody>
+            <h1>Tabuada</h1>
+        </tbody>
+    </table>
+    <script>
+        function gerarTabuada() {
+            // Limpar a tabela
+            document.querySelector('tbody').innerHTML = '';
+    
+            // Obter o número inserido pelo usuário
+            const numero = document.querySelector('#numero').value;
+    
+            // Gerar as linhas da tabela
+            for (let i = 1; i <= 10; i++) {
+                const resultado = i * numero;
+                const linha = `
+                    <tr>
+                        <td>${numero} x ${i}</td>
+                        <td>${resultado}</td>
+                    </tr>
+                `;
+                document.querySelector('tbody').insertAdjacentHTML('beforeend', linha);
+            }
+        }
+    
+        // Adicionar um evento de clique no botão de enviar do formulário
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita que a página seja recarregada
+            gerarTabuada(); // Chama a função que gera a tabuada
+        });
+    </script>
+</body>
+</html>
